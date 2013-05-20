@@ -1,3 +1,11 @@
+//**********************************************************************
+//
+// Simple Serial communicationss with ATmega168. 
+// Most code is from the datasheet.
+//
+// electronut.in
+//**********************************************************************
+
 #include <avr/io.h>
 #include <util/delay.h>
 #include <string.h>
@@ -47,13 +55,16 @@ void serial_write_str(const char* str)
 
 int main (void)
 {
+  // Put an LED on PD4 (pin 6)
 	// PD4 as output
 	DDRD |= (1<<4);
 	//Set high
 	PORTD |= (1<<4); 
   
+  // initialize USART
   USART_Init(MYUBRR);
 
+  // loop 
   int count = 10;
   while (1) {
 
